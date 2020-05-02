@@ -12,6 +12,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/styles';
 import Container from '@material-ui/core/Container';
+import { userContext } from './Login';
 
 function Copyright() {
   return (
@@ -45,8 +46,10 @@ const useStyles = makeStyles(() => ({
     margin: '3px 0px 2px', /* theme.spacing(3, 0, 2), */
   },
 }));
-
-export default function SignIn() {
+interface Props {
+  onChange: (name: string, value: string) => void
+}
+export const SignIn = (props: Props) => {
   const classes = useStyles();
 
   return (
@@ -59,7 +62,7 @@ export default function SignIn() {
         <Typography component="h1" variant="h5">
           Sign in
         </Typography>
-        <form className={classes.form} noValidate>
+        <form className={classes.form} noValidate onSubmit={(e)=> e.preventDefault()}>
           <TextField
             variant="outlined"
             margin="normal"
@@ -70,6 +73,7 @@ export default function SignIn() {
             name="email"
             autoComplete="email"
             autoFocus
+            onChange={(event) => props.onChange('email', event.target.value)}
           />
           <TextField
             variant="outlined"
@@ -81,20 +85,28 @@ export default function SignIn() {
             type="password"
             id="password"
             autoComplete="current-password"
+            onChange={(event) => props.onChange('password', event.target.value)}
           />
           <FormControlLabel
             control={<Checkbox value="remember" color="primary" />}
             label="Remember me"
           />
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.submit}
-          >
-            Sign In
-          </Button>
+          <userContext.Consumer>
+            {(value) => (
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                color="primary"
+                className={classes.submit}
+                onClick={value.signIn}
+              >
+                Sign In
+              </Button>)
+            }
+          </userContext.Consumer>
+
+
           <Grid container>
             <Grid item xs>
               <Link href="#" variant="body2">
@@ -114,4 +126,4 @@ export default function SignIn() {
       </Box>
     </Container>
   );
-}
+};

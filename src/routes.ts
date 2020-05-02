@@ -9,7 +9,7 @@ import Unarchive from '@material-ui/icons/Unarchive';
 import Language from '@material-ui/icons/Language';
 // core components/views for Admin layout
 import DashboardPage from './views/Dashboard/Dashboard';
-import Login from './views/Login/Login';
+import LoginPage from './views/Login/Login';
 import UserProfile from './views/UserProfile/UserProfile';
 import TableList from './views/TableList/TableList';
 import Typography from './views/Typography/Typography';
@@ -25,7 +25,7 @@ export const dashboardRoutes = [
     name: 'Login',
     rtlName: '',
     icon: Person,
-    component: Login,
+    component: LoginPage,
     layout: '/admin'
   },
   {

@@ -1,43 +1,50 @@
 import React from 'react';
 // @material-ui/core
 import withStyles from '@material-ui/core/styles/withStyles';
-import SignIn from './SignIn';
+import { SignIn } from './SignIn';
 import dashboardStyle from '../../assets/jss/material-dashboard-react/views/dashboardStyle';
-
+import { User } from './../../models/user';
 interface Props {
   classes: any;
+ /*  signIn: (user: User) => void; */ // TODO: Make a redux container to handle this 
 }
 
 interface State {
-  value: number;
+  email: string;
+  password: string;
 }
-
-class Login extends React.Component<Props, State> {
+const userContext = React.createContext({ user: { email: '', password: '' }, signIn: undefined });
+class LoginPage extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
-      value: 0
+      email: '0',
+      password: '',
     };
-    this.handleChange = this.handleChange.bind(this);
-    this.handleChangeIndex = this.handleChangeIndex.bind(this);
-  }
-  handleChange = (event: any, value: number) => {
-    this.setState({ value });
   }
 
-  handleChangeIndex = (index: number) => {
-    this.setState({ value: index });
+  handleChange = (name: string, value: string) => {
+    this.setState({
+      ...this.state,
+      [name]: value
+    });
   }
+  getUser = (): User => ({ email: this.state.email, password: this.state.password });
+
+  signIn = () => (
+    alert(JSON.stringify(this.getUser()))
+  );
 
   render() {
-    return (
-      <div>
-        <form action="">
-          <SignIn />
-        </form>
-      </div >
+     return (
+      <userContext.Provider value={{ user: this.getUser(), signIn: this.signIn as any }}>
+        <SignIn onChange={this.handleChange} />
+      </userContext.Provider >
     );
   }
 }
+export {
+  userContext // Export it so it can be used by other Components
+};
 
-export default withStyles(dashboardStyle)(Login);
+export default withStyles(dashboardStyle)(LoginPage);
