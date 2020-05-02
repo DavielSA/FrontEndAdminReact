@@ -53,6 +53,7 @@ class CustomTabs extends React.Component<Props, State> {
       [classes.cardTitle]: true,
       [classes.cardTitleRTL]: rtlActive
     });
+    console.log(this.props);
     return (
       <Card plain={plainTabs}>
         <CardHeader color={headerColor} plain={plainTabs}>
@@ -81,8 +82,8 @@ class CustomTabs extends React.Component<Props, State> {
                 <Tab
                   classes={{
                     root: classes.tabRootButton,
-                    labelContainer: classes.tabLabelContainer,
-                    label: classes.tabLabel,
+                    // labelContainer: classes.tabLabelContainer,
+                    // label: classes.tabLabel,
                     selected: classes.tabSelected,
                     wrapper: classes.tabWrapper
                   }}

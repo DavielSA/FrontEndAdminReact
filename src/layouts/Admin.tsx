@@ -12,7 +12,7 @@ import Footer from '../components/Footer/Footer';
 import Sidebar from '../components/Sidebar/Sidebar';
 import FixedPlugin from '../components/FixedPlugin/FixedPlugin';
 
-import routes from '../routes';
+import routes, { dashboardRoutes } from '../routes';
 
 import dashboardStyle from '../assets/jss/material-dashboard-react/layouts/dashboardStyle';
 
@@ -60,7 +60,7 @@ class Dashboard extends React.Component<Props, State> {
       mobileOpen: false
     };
   }
-  
+
   handleImageClick = (i: string) => {
     this.setState({ image: i });
   }
@@ -117,7 +117,7 @@ class Dashboard extends React.Component<Props, State> {
       <div className={classes.wrapper}>
         <Sidebar
           routes={routes}
-          logoText={'Creative Tim'}
+          logoText={'Solinfpro.es'}
           logo={logo}
           image={this.state.image}
           handleDrawerToggle={this.handleDrawerToggle}
@@ -137,17 +137,19 @@ class Dashboard extends React.Component<Props, State> {
               <div className={classes.container}>{switchRoutes}</div>
             </div>
           ) : (
-            <div className={classes.map}>{switchRoutes}</div>
-          )}
+              <div className={classes.map}>{switchRoutes}</div>
+            )}
           {this.getRoute() ? <Footer /> : null}
-          <FixedPlugin
-            handleImageClick={this.handleImageClick}
-            handleColorClick={this.handleColorClick}
-            bgColor={this.state.color}
-            bgImage={this.state.image}
-            handleFixedClick={this.handleFixedClick}
-            fixedClasses={this.state.fixedClasses}
-          />
+          {this.props.location.pathname === dashboardRoutes[0].layout + dashboardRoutes[0].path
+            ? null :
+            <FixedPlugin
+              handleImageClick={this.handleImageClick}
+              handleColorClick={this.handleColorClick}
+              bgColor={this.state.color}
+              bgImage={this.state.image}
+              handleFixedClick={this.handleFixedClick}
+              fixedClasses={this.state.fixedClasses}
+            />}
         </div>
       </div>
     );

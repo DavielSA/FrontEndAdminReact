@@ -81,7 +81,7 @@ const Sidebar = ({ ...props }) => {
   var brand = (
     <div className={classes.logo}>
       <a
-        href="https://www.creative-tim.com"
+        href="http://www.solinfpro.es"
         className={classNames(classes.logoLink, {
           [classes.logoLinkRTL]: props.rtlActive
         })}
@@ -147,9 +147,5 @@ const Sidebar = ({ ...props }) => {
     </div>
   );
 };
-
-// Sidebar.propTypes = {
-//   classes: PropTypes.object.isRequired
-// };
 
 export default withStyles(sidebarStyle)(Sidebar);

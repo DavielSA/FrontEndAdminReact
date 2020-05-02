@@ -16,11 +16,10 @@ import Typography from './views/Typography/Typography';
 import Icons from './views/Icons/Icons';
 import Maps from './views/Maps/Maps';
 import NotificationsPage from './views/Notifications/Notifications';
-import UpgradeToPro from './views/UpgradeToPro/UpgradeToPro';
 // core components/views for RTL layout
 import RTLPage from './views/RTLPage/RTLPage';
 
-const dashboardRoutes = [
+export const dashboardRoutes = [
   {
     path: '/login',
     name: 'Login',
@@ -84,15 +83,7 @@ const dashboardRoutes = [
     icon: Notifications,
     component: NotificationsPage,
     layout: '/admin'
-  },
-  {
-    path: '/upgrade-to-pro',
-    name: 'Upgrade To PRO',
-    rtlName: 'التطور للاحترافية',
-    icon: Unarchive,
-    component: UpgradeToPro,
-    layout: '/admin'
-  },
+  }, 
   {
     path: '/rtl-page',
     name: 'RTL Support',
