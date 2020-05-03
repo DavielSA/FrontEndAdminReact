@@ -22,9 +22,9 @@ const handleUserSignInAction = (state: UserProfileState, user: User) => {
 
 export const userProfileReducer = (state = defaultUserState(), action: Action) => {
   switch (action.type) {
-    case actionsEnums.SIGN_IN_USER:
-      return handleUserSignInAction(state, action.payload);
-    default:
-      return state;
+  case actionsEnums.SIGN_IN_USER:
+    return handleUserSignInAction(state, action.payload);
+  default:
+    return state;
   }
 };

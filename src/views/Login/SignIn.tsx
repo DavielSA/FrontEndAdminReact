@@ -35,12 +35,12 @@ const useStyles = makeStyles(() => ({
     alignItems: 'center',
   },
   avatar: {
-    margin: '1px',/*  theme.spacing(1), */
+    margin: '1px', /*  theme.spacing(1), */
     backgroundColor: 'blue'/* theme.palette.secondary.main */,
   },
   form: {
     width: '100%', // Fix IE 11 issue.
-    marginTop: '1px',/*  theme.spacing(1), */
+    marginTop: '1px', /*  theme.spacing(1), */
   },
   submit: {
     margin: '3px 0px 2px', /* theme.spacing(3, 0, 2), */
@@ -62,24 +62,24 @@ export const SignIn = (props: Props) => {
         <Typography component="h1" variant="h5">
           Sign in
         </Typography>
-        <form className={classes.form} noValidate onSubmit={(e)=> e.preventDefault()}>
+        <form className={classes.form} noValidate={true} onSubmit={(e) => e.preventDefault()}>
           <TextField
             variant="outlined"
             margin="normal"
-            required
-            fullWidth
+            required={true}
+            fullWidth={true}
             id="email"
             label="Email Address"
             name="email"
             autoComplete="email"
-            autoFocus
+            autoFocus={true}
             onChange={(event) => props.onChange('email', event.target.value)}
           />
           <TextField
             variant="outlined"
             margin="normal"
-            required
-            fullWidth
+            required={true}
+            fullWidth={true}
             name="password"
             label="Password"
             type="password"
@@ -95,7 +95,7 @@ export const SignIn = (props: Props) => {
             {(value) => (
               <Button
                 type="submit"
-                fullWidth
+                fullWidth={true}
                 variant="contained"
                 color="primary"
                 className={classes.submit}
@@ -105,15 +105,15 @@ export const SignIn = (props: Props) => {
               </Button>)
             }
           </userContext.Consumer>
-          <Grid container>
-            <Grid item xs>
+          <Grid container={true}>
+            <Grid item={true} xs={true}>
               <Link href="#" variant="body2">
                 Forgot password?
               </Link>
             </Grid>
-            <Grid item>
+            <Grid item={true}>
               <Link href="#" variant="body2">
-                {"Don't have an account? Sign Up"}
+                {'Don\'t have an account? Sign Up'}
               </Link>
             </Grid>
           </Grid>
