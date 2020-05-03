@@ -47,7 +47,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 interface Props {
-  onChange: (name: string, value: string) => void
+  onChange: (name: string, value: string) => void;
 }
 export const SignIn = (props: Props) => {
   const classes = useStyles();
@@ -105,8 +105,6 @@ export const SignIn = (props: Props) => {
               </Button>)
             }
           </userContext.Consumer>
-
-
           <Grid container>
             <Grid item xs>
               <Link href="#" variant="body2">

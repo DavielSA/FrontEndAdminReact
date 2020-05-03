@@ -5,11 +5,9 @@ import LibraryBooks from '@material-ui/icons/LibraryBooks';
 import BubbleChart from '@material-ui/icons/BubbleChart';
 import LocationOn from '@material-ui/icons/LocationOn';
 import Notifications from '@material-ui/icons/Notifications';
-import Unarchive from '@material-ui/icons/Unarchive';
 import Language from '@material-ui/icons/Language';
 // core components/views for Admin layout
 import DashboardPage from './views/Dashboard/Dashboard';
-import LoginPage from './views/Login/Login';
 import UserProfile from './views/UserProfile/UserProfile';
 import TableList from './views/TableList/TableList';
 import Typography from './views/Typography/Typography';
@@ -18,6 +16,7 @@ import Maps from './views/Maps/Maps';
 import NotificationsPage from './views/Notifications/Notifications';
 // core components/views for RTL layout
 import RTLPage from './views/RTLPage/RTLPage';
+import {LoginContainer} from './views/Login/LoginContainer';
 
 export const dashboardRoutes = [
   {
@@ -25,7 +24,7 @@ export const dashboardRoutes = [
     name: 'Login',
     rtlName: '',
     icon: Person,
-    component: LoginPage,
+    component: LoginContainer,
     layout: '/admin'
   },
   {

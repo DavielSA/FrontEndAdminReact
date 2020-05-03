@@ -6,13 +6,14 @@ import dashboardStyle from '../../assets/jss/material-dashboard-react/views/dash
 import { User } from './../../models/user';
 interface Props {
   classes: any;
- /*  signIn: (user: User) => void; */ // TODO: Make a redux container to handle this 
+  onSignIn: (user: User) => void;
 }
 
 interface State {
   email: string;
   password: string;
 }
+
 const userContext = React.createContext({ user: { email: '', password: '' }, signIn: undefined });
 class LoginPage extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -31,12 +32,10 @@ class LoginPage extends React.Component<Props, State> {
   }
   getUser = (): User => ({ email: this.state.email, password: this.state.password });
 
-  signIn = () => (
-    alert(JSON.stringify(this.getUser()))
-  );
+  signIn = () => (this.props.onSignIn(this.getUser()));
 
   render() {
-     return (
+    return (
       <userContext.Provider value={{ user: this.getUser(), signIn: this.signIn as any }}>
         <SignIn onChange={this.handleChange} />
       </userContext.Provider >
